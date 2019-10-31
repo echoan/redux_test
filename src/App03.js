@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import App04 from './App04'
 import store from './storeone'
-import {changeInputAction,AddText,DelText,getListData} from './storeone/actionCreat.js'
+import {changeInputAction,AddText,DelText,getListDataOne} from './storeone/actionCreat.js'
 
-import axios from 'axios'
+//import axios from 'axios'
 
 class App03 extends Component {
     constructor(props) {
@@ -18,22 +18,21 @@ class App03 extends Component {
         </div>);
     }
     componentDidMount(){
-        axios.get("http://api.izhangchu.com/",{
-            params:{
-                methodName:"CourseIndex",
-                version:4.4,
-                user_id:0,
-                page:1,
-                size:10
-            }
-        }).then((res)=>{
-            console.log(res.data.data.data)
-            const data = res.data.data.data
-            const action = getListData(data)
-            store.dispatch(action)
-        })
-        // axios.get('https://www.easy-mock.com/mock/5cfcce489dc7c36bd6da2c99/xiaojiejie/getList').then((res)=>{
-        //     console.log(res.data)
+        const action = getListDataOne()
+        store.dispatch(action)
+        // axios.get("http://api.izhangchu.com/",{
+        //     params:{
+        //         methodName:"CourseIndex",
+        //         version:4.4,
+        //         user_id:0,
+        //         page:1,
+        //         size:10
+        //     }
+        // }).then((res)=>{
+        //     console.log(res.data.data.data)
+        //     const data = res.data.data.data
+        //     const action = getListData(data)
+        //     store.dispatch(action)
         // })
     }
     changeInput=(e)=>{
